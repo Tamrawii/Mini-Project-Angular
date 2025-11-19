@@ -1,0 +1,115 @@
+<section class="container mx-auto mt-5 p-4 course-details">
+  <main class="main-details d-grid">
+    <div class="Category">
+      <ul>
+        @for(category of courseDetails().cotegories; track category) {
+        <li>{{category}}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="title">
+      <h1>{{ courseDetails().title }}</h1>
+    </div>
+
+    <div class="description">
+      <p>{{ courseDetails().description }}</p>
+    </div>
+
+    <div class="bottom-group d-flex align-items-center gap-3">
+      <!--<button class="btn btn-secondary" type="button">Sign-up now</button>-->
+      <span><strong>15</strong> learners enrolled</span>
+    </div>
+  </main>
+
+  <div class="more-details card w-50">
+    <h4 class="card-header">More details about the course</h4>
+    <ul class="more-details-list list-group list-group-flush">
+      <li class="list-group-item d-flex gap-2 align-items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-reception-4"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M0 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5z"
+          />
+        </svg>
+        Skill level: <strong>{{ courseDetails().level}}</strong>
+      </li>
+      <li class="list-group-item d-flex gap-2 align-items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-clock-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+          />
+        </svg>
+        Time to complete: <strong>{{ courseDetails().duration}} hours</strong>
+      </li>
+      <li class="list-group-item d-flex gap-2 align-items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-people-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"
+          />
+        </svg>
+        Instructor(s): @for(instructor of courseDetails().instructors; track instructor) {
+        <strong>{{ instructor }}</strong>
+        }
+      </li>
+    </ul>
+    <div class="card-body d-grid gap-2">
+      <span class="d-flex gap-2 align-items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-download"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"
+          />
+          <path
+            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"
+          />
+        </svg>
+        <a target="_blank" href="{{ courseDetails().program }}" class="card-link"
+          >Download program</a
+        >
+      </span>
+      <span class="d-flex gap-2 align-items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-share"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"
+          />
+        </svg>
+        <a href="#" class="card-link">Share this course</a>
+      </span>
+    </div>
+    <div class="card-footer text-muted">Latest update: 22/10/2025</div>
+  </div>
+</section>

@@ -1,0 +1,5 @@
+<section class="courses-list">
+  @for (course of coursesList; track course.id) {
+  <app-card [course]="course"></app-card>
+  }
+</section>
