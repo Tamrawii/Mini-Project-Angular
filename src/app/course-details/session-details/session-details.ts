@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { SessionModel } from './session.model';
 import { DatePipe } from '@angular/common';
 
@@ -10,4 +10,10 @@ import { DatePipe } from '@angular/common';
 })
 export class SessionDetails {
   sessionsList = input.required<SessionModel[]>();
+
+  // Send an event to the parent componenet when the sign-up button is clicked
+  signupEvent = output<boolean>();
+  onSignup() {
+    this.signupEvent.emit(false);
+  }
 }

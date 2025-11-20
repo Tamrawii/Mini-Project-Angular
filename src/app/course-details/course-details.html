@@ -1,2 +1,9 @@
+<app-enroll-course
+  [class.hidden]="isHidden"
+  (hideDialogEvenet)="onCloseDialog($event)"
+></app-enroll-course>
 <app-details-card [courseDetails]="courseDetails()"></app-details-card>
-<app-session-details [sessionsList]="sessionsList()"></app-session-details>
+<app-session-details
+  [sessionsList]="sessionsList()"
+  (signupEvent)="onSignupClick($event)"
+></app-session-details>

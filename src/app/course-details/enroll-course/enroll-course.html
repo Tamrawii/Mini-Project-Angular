@@ -1,1 +1,71 @@
-<p>enroll-course works!</p>
+<div class="backdrop" (click)="onHideDialog()"></div>
+<dialog open>
+  <h2>Sign-up for the session</h2>
+  <form class="mt-4">
+    <div class="d-flex gap-4">
+      <div>
+        <label for="name" class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Enter your first name"
+          [(ngModel)]="fName"
+        />
+      </div>
+      <div>
+        <label for="fName" class="form-label">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fName"
+          placeholder="Enter your last name"
+          [(ngModel)]="lName"
+        />
+      </div>
+    </div>
+    <div>
+      <label for="email" class="form-label mt-4">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter email"
+        [(ngModel)]="email"
+      />
+    </div>
+    <div>
+      <label for="cin" class="form-label mt-4">ID Number</label>
+      <input
+        type="text"
+        class="form-control"
+        id="cin"
+        placeholder="Enter your ID number"
+        [(ngModel)]="idNum"
+      />
+    </div>
+
+    <div>
+      <label for="pd" class="form-label mt-4">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="pd"
+        placeholder="Enter your password"
+        [(ngModel)]="pd"
+      />
+    </div>
+
+    <div>
+      <label for="formFile" class="form-label mt-4">Upload your picture</label>
+      <input class="form-control" type="file" id="formFile" />
+    </div>
+
+    <div class="actions mt-3 d-flex justify-content-end gap-3">
+      <button type="button" class="btn btn-outline-secondary" (click)="onHideDialog()">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-outline-primary">Create</button>
+    </div>
+  </form>
+</dialog>

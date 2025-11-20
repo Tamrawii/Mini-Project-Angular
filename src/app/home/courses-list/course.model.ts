@@ -13,6 +13,7 @@ export interface CourseModel {
   duration: number;
   program: string;
   level: Level;
+  enrolledPlaces: number;
   keyWords: string[];
   cotegories: string[];
   instructors: string[];
