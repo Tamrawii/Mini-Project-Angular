@@ -14,7 +14,6 @@ export class CourseService {
       duration: 25,
       program: '',
       level: Level.Beginner,
-      enrolledPlaces: 9,
       keyWords: ['algorithms', 'variables', 'loops'],
       cotegories: ['Computer Science', 'Development'],
       instructors: ['Dr. Karim B.'],
@@ -27,7 +26,7 @@ export class CourseService {
       duration: 40,
       program: '',
       level: Level.Beginner,
-      enrolledPlaces: 13,
+
       keyWords: ['html', 'css', 'javascript'],
       cotegories: ['Web Development'],
       instructors: ['Sarra T.'],
@@ -41,7 +40,7 @@ export class CourseService {
       duration: 60,
       program: '',
       level: Level.Intermediate,
-      enrolledPlaces: 14,
+
       keyWords: ['flutter', 'dart', 'mobile'],
       cotegories: ['Mobile', 'Development'],
       instructors: ['Mohamed C.'],
@@ -54,7 +53,6 @@ export class CourseService {
       duration: 35,
       program: '',
       level: Level.Beginner,
-      enrolledPlaces: 0,
       keyWords: ['sql', 'queries', 'mysql'],
       cotegories: ['Data'],
       instructors: ['Amira H.'],
@@ -67,7 +65,6 @@ export class CourseService {
       duration: 55,
       program: '',
       level: Level.Intermediate,
-      enrolledPlaces: 5,
       keyWords: ['machine learning', 'python', 'models'],
       cotegories: ['Artificial Intelligence'],
       instructors: ['Dr. Walid K.'],
@@ -81,7 +78,6 @@ export class CourseService {
       duration: 45,
       program: '',
       level: Level.Advanced,
-      enrolledPlaces: 2,
       keyWords: ['solid', 'clean code', 'design patterns'],
       cotegories: ['Development'],
       instructors: ['Youssef M.'],
@@ -93,7 +89,7 @@ export class CourseService {
     return this.coursesList();
   }
 
-  getCourseById(id: number): CourseModel | undefined {
-    return this.coursesList().find((course) => course.id === id);
+  getCourseById(courseId: number): CourseModel | undefined {
+    return this.coursesList().find((course) => course.id === courseId);
   }
 }

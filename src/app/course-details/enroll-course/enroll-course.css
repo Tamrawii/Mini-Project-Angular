@@ -20,3 +20,8 @@ dialog {
   top: 5rem;
   z-index: 999;
 }
+
+.invalid-feedback {
+  color: red !important;
+  display: block !important;
+}

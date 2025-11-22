@@ -9,4 +9,5 @@ import { CourseModel } from '../../home/courses-list/course.model';
 })
 export class DetailsCard {
   courseDetails = input.required<CourseModel>();
+  totalLearners = input.required<number>();
 }

@@ -16,6 +16,7 @@ import { EnrollCourse } from './enroll-course/enroll-course';
 })
 export class CourseDetails {
   courseId!: number;
+  selectedSession!: number;
   isHidden: boolean = true;
   courseDetails = signal<CourseModel>({
     id: 0,
@@ -24,7 +25,6 @@ export class CourseDetails {
     duration: 0,
     program: '',
     level: Level.Beginner,
-    enrolledPlaces: 0,
     keyWords: [],
     cotegories: [],
     instructors: [],
@@ -39,6 +39,7 @@ export class CourseDetails {
       staringDate: 'string',
       finishingDate: 'string',
       language: Language.Arabic,
+      enrolledPlaces: 0,
     },
   ]);
 
@@ -54,11 +55,16 @@ export class CourseDetails {
     this.sessionsList.set(this.sessionService.getCourseSessions(+this.courseId));
   }
 
-  onSignupClick(status: boolean) {
-    this.isHidden = status;
+  onSignupClick(recievedData: [boolean, number]) {
+    this.isHidden = recievedData[0];
+    this.selectedSession = recievedData[1];
   }
 
   onCloseDialog(status: boolean) {
     this.isHidden = status;
+  }
+
+  getTotalCourseLearners(): number {
+    return this.sessionService.getTotalLearners(+this.courseId);
   }
 }

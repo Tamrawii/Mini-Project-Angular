@@ -11,4 +11,5 @@ export interface SessionModel {
   staringDate: string;
   finishingDate: string;
   language: Language;
+  enrolledPlaces: number;
 }

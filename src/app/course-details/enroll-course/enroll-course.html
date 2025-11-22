@@ -1,27 +1,49 @@
 <div class="backdrop" (click)="onHideDialog()"></div>
 <dialog open>
-  <h2>Sign-up for the session</h2>
-  <form class="mt-4">
+  <h2>Sign-up for this session</h2>
+  <form (ngSubmit)="onSubmit()" class="mt-4" #f="ngForm">
     <div class="d-flex gap-4">
       <div>
-        <label for="name" class="form-label">First Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          placeholder="Enter your first name"
-          [(ngModel)]="fName"
-        />
-      </div>
-      <div>
-        <label for="fName" class="form-label">Last Name</label>
+        <label for="fName" class="form-label">First Name</label>
         <input
           type="text"
           class="form-control"
           id="fName"
-          placeholder="Enter your last name"
-          [(ngModel)]="lName"
+          name="fName"
+          placeholder="Enter your first name"
+          required
+          minlength="3"
+          [(ngModel)]="fName"
+          #enteredFName="ngModel"
         />
+        <!--Input validator-->
+        @if(enteredFName.invalid && (enteredFName.dirty || enteredFName.touched)) {
+        @if(enteredFName.hasError('required')) {
+        <div class="invalid-feedback">This field is required</div>
+        } @if(enteredFName.hasError('minlength')) {
+        <div class="invalid-feedback">First name must be at least 3 characters long.</div>
+        } }
+      </div>
+      <div>
+        <label for="lName" class="form-label">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lName"
+          name="lName"
+          placeholder="Enter your last name"
+          required
+          minlength="3"
+          [(ngModel)]="lName"
+          #enteredLName="ngModel"
+        />
+        <!--Input validator-->
+        @if(enteredLName.invalid && (enteredLName.dirty || enteredLName.touched)) {
+        @if(enteredLName.hasError('required')) {
+        <div class="invalid-feedback">This field is required</div>
+        } @if(enteredLName.hasError('minlength')) {
+        <div class="invalid-feedback">First name must be at least 3 characters long.</div>
+        } }
       </div>
     </div>
     <div>
@@ -30,9 +52,20 @@
         type="email"
         class="form-control"
         id="email"
+        name="email"
+        required
+        pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
         placeholder="Enter email"
         [(ngModel)]="email"
+        #enteredEmail="ngModel"
       />
+      <!--Input validator-->
+      @if(enteredEmail.invalid && (enteredEmail.dirty || enteredEmail.touched)) {
+      @if(enteredEmail.hasError('required')) {
+      <div class="invalid-feedback">This field is required</div>
+      } @if(enteredEmail.hasError('pattern')) {
+      <div class="invalid-feedback">Invalid email address</div>
+      } }
     </div>
     <div>
       <label for="cin" class="form-label mt-4">ID Number</label>
@@ -40,20 +73,44 @@
         type="text"
         class="form-control"
         id="cin"
+        name="cin"
+        required
+        pattern="[0-9]{12}"
         placeholder="Enter your ID number"
         [(ngModel)]="idNum"
+        #enteredID="ngModel"
       />
+      @if(enteredID.invalid && (enteredID.dirty || enteredID.touched)){
+      @if(enteredID.hasError('required')) {
+      <div class="invalid-feedback">This field is required</div>
+      } @if(enteredID.hasError('pattern')){
+      <div class="invalid-feedback">Invalid ID number</div>
+      } }
     </div>
 
     <div>
       <label for="pd" class="form-label mt-4">Password</label>
       <input
         type="password"
+        name="password"
         class="form-control"
         id="pd"
+        name="pd"
+        required
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$"
         placeholder="Enter your password"
         [(ngModel)]="pd"
+        #enteredPassword="ngModel"
       />
+      @if(enteredPassword.invalid && (enteredPassword.dirty || enteredPassword.touched)){
+      @if(enteredPassword.hasError("required")) {
+      <div class="invalid-feedback">This field is required</div>
+      } @if(enteredPassword.hasError('pattern')){
+      <div class="invalid-feedback">
+        Must contain at least one number and one uppercase and lowercase letter, and at least 8 or
+        more characters
+      </div>
+      } }
     </div>
 
     <div>
