@@ -138,6 +138,11 @@ export class SessionService {
     },
   ]);
 
+  constructor() {
+    const sessions = localStorage.getItem('sessions');
+    if (sessions) this.sessionsList.set(JSON.parse(sessions));
+  }
+
   getSession() {
     return this.sessionsList();
   }
@@ -160,5 +165,11 @@ export class SessionService {
     this.sessionsList().find(
       (session) => session.courseId === +courseID && session.id === sessionID,
     )!.enrolledPlaces++;
+    this.saveSessions();
+  }
+
+  saveSessions() {
+    const sessions = JSON.stringify(this.sessionsList());
+    localStorage.setItem('sessions', sessions);
   }
 }

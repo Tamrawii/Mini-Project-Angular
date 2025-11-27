@@ -1,0 +1,21 @@
+.form-control-lg {
+  min-height: calc(2em + 2rem + calc(2px * 2));
+}
+
+#button-addon2 {
+  padding: 0 30px !important;
+  margin: 0 !important;
+  border-left: 0 !important;
+}
+
+#button-addon2:hover {
+  border-left: 2px solid #000 !important;
+}
+
+.courses-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  align-items: stretch;
+  gap: 20px;
+}

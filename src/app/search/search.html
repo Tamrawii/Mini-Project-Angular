@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">Learn from 350+ leading universities and companies</h1>
+
+  <div class="input-group mb-5">
+    <input
+      type="text"
+      class="form-control form-control-lg"
+      placeholder="What are you learning today?"
+      aria-describedby="button-addon2"
+      [(ngModel)]="enteredText"
+    />
+    <button class="btn btn-outline-primary" type="button" id="button-addon2" (click)="onSearch()">
+      Explore
+    </button>
+  </div>
+
+  <section class="courses-list">
+    @for (course of coursesList(); track course.id) { @if(course.id != -1){
+    <app-card [course]="course"></app-card>
+    } }
+  </section>
+</div>

@@ -1,0 +1,40 @@
+h1 {
+  margin-bottom: 35px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.cards-list {
+  /*width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  grid-column: repeat(1fr, 1fr, 1fr);
+  align-items: stretch;*/
+  gap: 20px;
+}
+
+.card {
+  background: rgb(233, 236, 239);
+  border-radius: 18px;
+  border: 0.8px solid grey;
+  padding: 22px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 10px 10px rgba(0, 0, 0, 1);
+}
+
+.card img {
+  height: 200px;
+}

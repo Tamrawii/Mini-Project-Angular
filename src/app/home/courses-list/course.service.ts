@@ -85,11 +85,30 @@ export class CourseService {
     },
   ]);
 
+  constructor() {
+    const courses = localStorage.getItem('courses');
+    if (courses) this.coursesList.set(JSON.parse(courses!));
+  }
+
   getCourses() {
     return this.coursesList();
   }
 
   getCourseById(courseId: number): CourseModel | undefined {
     return this.coursesList().find((course) => course.id === courseId);
+  }
+
+  saveCourses() {
+    const courses = JSON.stringify(this.coursesList());
+    localStorage.setItem('courses', courses);
+  }
+
+  getCourseByKeyWords(text: string) {
+    return this.coursesList().filter(
+      (course) =>
+        course.title.toLowerCase().includes(text.toLowerCase()) ||
+        course.description.toLowerCase().includes(text.toLowerCase()) ||
+        course.keyWords.includes(text.toLowerCase()),
+    );
   }
 }

@@ -65,7 +65,12 @@
         </div>
 
         <div class="col-2 d-flex align-items-center gap-2">
-          <button type="button" class="btn btn-outline-primary" (click)="onSignup(+session.id)">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            [disabled]="session.enrolledPlaces>=15"
+            (click)="onSignup(+session.id)"
+          >
             Sign-up
           </button>
         </div>
