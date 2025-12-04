@@ -1,4 +1,5 @@
-export interface Candidate {
+export interface CandidateModel {
+  id: number;
   firstName: string;
   lastName: string;
   email: string;

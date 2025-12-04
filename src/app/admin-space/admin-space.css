@@ -6,15 +6,6 @@ a {
   text-decoration: none;
 }
 
-.cards-list {
-  /*width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
-  grid-column: repeat(1fr, 1fr, 1fr);
-  align-items: stretch;*/
-  gap: 20px;
-}
-
 .card {
   background: rgb(233, 236, 239);
   border-radius: 18px;
