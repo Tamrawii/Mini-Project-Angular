@@ -1,0 +1,58 @@
+<!--@if(toggleUpdateDialog()) {
+<app-update-instructors
+  (hideDialogEvenet)="onHideUpdateDialog($event)"
+  [instructorData]="selectedInstructor()"
+></app-update-instructors>
+}-->
+@if(toggleAddDialog()) {
+<app-add-course (hideDialogEvenet)="onHideAddDialog($event)"></app-add-course>
+}
+<div class="container mt-5 mb-5">
+  <h1>Manage Courses & Sessions</h1>
+  <div class="col">
+    <div class="col text-end">
+      <button type="button" (click)="onShowAddDialog()" class="btn btn-outline-warning btn-md mb-3">
+        <i class="bi bi-plus"></i> Add course
+      </button>
+    </div>
+  </div>
+  <table class="table display" id="example">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <td scope="col">Title</td>
+        <th scope="col">Description</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Program</th>
+        <th scope="col">Level</th>
+        <th scope="col">Keywords</th>
+        <th scope="col">Categories</th>
+        <th scope="col">Total sessions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(course of coursesList(); track course.id){
+      <tr>
+        <th scope="row">{{course.id}}</th>
+        <td>{{ course.title }}</td>
+        <td>{{ course.description }}</td>
+        <td>{{ course.duration }}</td>
+        <td><a target="_blank" href="{{ course.program }}">View program</a></td>
+        <td>{{ course.level }}</td>
+        <td>{{ course.keyWords }}</td>
+        <td>
+          @for(category of course.categories; track category) {
+          <span class="badge rounded-pill bg-info"> {{ category }} </span>}
+        </td>
+        <td>
+          <button (click)="onShowUpdateDialog(course)" class="btn btn-outline-primary">
+            Update
+          </button>
+
+          <button (click)="removeCourse(course.id)" class="btn btn-outline-danger">Delete</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

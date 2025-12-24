@@ -1,0 +1,179 @@
+<div class="backdrop" (click)="onHideDialog()"></div>
+<dialog open>
+  <h2>Add new instructor</h2>
+  <form (ngSubmit)="onSubmit()" class="mt-4" #f="ngForm">
+    <div class="d-flex gap-4">
+      <div>
+        <label for="fName" class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fName"
+          name="fName"
+          placeholder="Enter instructor's first name"
+          required
+          minlength="3"
+          [(ngModel)]="fName"
+          #enteredFName="ngModel"
+        />
+        <!--Input validator-->
+        @if(enteredFName.invalid && (enteredFName.dirty || enteredFName.touched)) {
+        @if(enteredFName.hasError('required')) {
+        <div class="invalid-feedback">This field is required</div>
+        } @if(enteredFName.hasError('minlength')) {
+        <div class="invalid-feedback">First name must be at least 3 characters long.</div>
+        } }
+      </div>
+      <div>
+        <label for="lName" class="form-label">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lName"
+          name="lName"
+          placeholder="Enter instructor's last name"
+          required
+          minlength="3"
+          [(ngModel)]="lName"
+          #enteredLName="ngModel"
+        />
+        <!--Input validator-->
+        @if(enteredLName.invalid && (enteredLName.dirty || enteredLName.touched)) {
+        @if(enteredLName.hasError('required')) {
+        <div class="invalid-feedback">This field is required</div>
+        } @if(enteredLName.hasError('minlength')) {
+        <div class="invalid-feedback">First name must be at least 3 characters long.</div>
+        } }
+      </div>
+    </div>
+    <div>
+      <label for="email" class="form-label mt-4">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        required
+        pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+        placeholder="Enter instructor's email"
+        [(ngModel)]="email"
+        #enteredEmail="ngModel"
+      />
+      <!--Input validator-->
+      @if(enteredEmail.invalid && (enteredEmail.dirty || enteredEmail.touched)) {
+      @if(enteredEmail.hasError('required')) {
+      <div class="invalid-feedback">This field is required</div>
+      } @if(enteredEmail.hasError('pattern')) {
+      <div class="invalid-feedback">Invalid email address</div>
+      } }
+    </div>
+    <div class="d-flex gap-4">
+      <div>
+        <label for="phone" class="form-label mt-4">Phone Number</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text">+216</span>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            name="phone"
+            required
+            pattern="[0-9]{8}"
+            placeholder="Enter instructor's phone number"
+            [(ngModel)]="phone"
+            #enteredPhone="ngModel"
+          />
+        </div>
+
+        @if(enteredPhone.invalid && (enteredPhone.dirty || enteredPhone.touched)){
+        @if(enteredPhone.hasError('required')) {
+        <div class="invalid-feedback">This field is required</div>
+        } @if(enteredPhone.hasError('pattern')){
+        <div class="invalid-feedback">Invalid phone number</div>
+        } }
+      </div>
+
+      <div>
+        <label for="cin" class="form-label mt-4">ID Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="cin"
+          name="cin"
+          required
+          pattern="[0-9]{8}"
+          placeholder="Enter instructor's ID number"
+          [(ngModel)]="idNum"
+          #enteredID="ngModel"
+        />
+        @if(enteredID.invalid && (enteredID.dirty || enteredID.touched)){
+        @if(enteredID.hasError('required')) {
+        <div class="invalid-feedback">This field is required</div>
+        } @if(enteredID.hasError('pattern')){
+        <div class="invalid-feedback">Invalid ID number</div>
+        } }
+      </div>
+    </div>
+
+    <div>
+      <label for="skills" class="form-label mt-2">Skills</label>
+      <input
+        type="text"
+        class="form-control"
+        id="skills"
+        name="skills"
+        required
+        placeholder="Enter instructor's skills"
+        [(ngModel)]="skills"
+        #enteredSkills="ngModel"
+      />
+      @if(enteredSkills.invalid && (enteredSkills.dirty || enteredSkills.touched)){
+      @if(enteredSkills.hasError('required')) {
+      <div class="invalid-feedback">This field is required</div>
+      } }
+    </div>
+
+    <div>
+      <label for="photo" class="form-label mt-2">Photo</label>
+      <input
+        type="text"
+        class="form-control"
+        id="photo"
+        name="photo"
+        required
+        placeholder="Enter instructor's photo"
+        [(ngModel)]="photo"
+        #enteredPhoto="ngModel"
+      />
+      @if(enteredPhoto.invalid && (enteredPhoto.dirty || enteredPhoto.touched)){
+      @if(enteredPhoto.hasError('required')) {
+      <div class="invalid-feedback">This field is required</div>
+      } }
+    </div>
+
+    <div>
+      <label for="cv" class="form-label mt-2">C.V</label>
+      <input
+        type="text"
+        class="form-control"
+        id="cv"
+        name="cv"
+        required
+        placeholder="Enter instructor's C.V"
+        [(ngModel)]="cv"
+        #enteredCV="ngModel"
+      />
+      @if(enteredCV.invalid && (enteredCV.dirty || enteredCV.touched)){
+      @if(enteredCV.hasError('required')) {
+      <div class="invalid-feedback">This field is required</div>
+      } }
+    </div>
+
+    <div class="actions mt-3 d-flex justify-content-end gap-3">
+      <button type="button" (click)="onHideDialog()" class="btn btn-outline-secondary">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-outline-primary">Add</button>
+    </div>
+  </form>
+</dialog>

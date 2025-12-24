@@ -1,0 +1,27 @@
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+dialog {
+  width: 90%;
+  max-width: 30rem;
+  background: rgb(233, 236, 239);
+  border-radius: 18px;
+  border: none;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  padding: 2rem;
+  top: 5rem;
+  z-index: 999;
+}
+
+.invalid-feedback {
+  color: red !important;
+  display: block !important;
+}

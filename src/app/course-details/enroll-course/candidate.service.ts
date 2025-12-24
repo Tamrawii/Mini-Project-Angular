@@ -78,7 +78,6 @@ export class CandidateService {
       else dummyList().push(c);
     });
     this.candidatesList.set(dummyList());
-    console.log(this.candidatesList());
     this.saveSessions();
   }
 

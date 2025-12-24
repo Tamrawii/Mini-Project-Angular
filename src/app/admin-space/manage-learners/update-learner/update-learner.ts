@@ -2,7 +2,6 @@ import { Component, input, output, signal, OnInit } from '@angular/core';
 import { CandidateService } from '../../../course-details/enroll-course/candidate.service';
 import { CandidateModel } from '../../../course-details/enroll-course/candidate.model';
 import { FormsModule } from '@angular/forms';
-import { getEffectiveConstraintOfTypeParameter } from 'typescript';
 
 @Component({
   selector: 'app-update-learner',

@@ -22,7 +22,7 @@ export class Search {
       program: '',
       level: Level.Beginner,
       keyWords: [],
-      cotegories: [],
+      categories: [],
       instructors: [],
       sessions: [
         {

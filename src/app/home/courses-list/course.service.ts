@@ -1,10 +1,13 @@
 import { Injectable, InputSignal, signal } from '@angular/core';
 import { Level, type CourseModel } from './course.model';
+import { InstructorService } from '../../admin-space/manage-instructors/instructor.service';
+import { InstructorModel } from '../../admin-space/manage-instructors/instructor.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseService {
+  private instructorList = signal<InstructorModel[]>([]);
   private coursesList = signal<CourseModel[]>([
     {
       id: 1,
@@ -15,8 +18,8 @@ export class CourseService {
       program: '',
       level: Level.Beginner,
       keyWords: ['algorithms', 'variables', 'loops'],
-      cotegories: ['Computer Science', 'Development'],
-      instructors: ['Dr. Karim B.'],
+      categories: ['Computer Science', 'Development'],
+      instructors: [this.instructorList()[0]],
       sessions: [],
     },
     {
@@ -28,8 +31,8 @@ export class CourseService {
       level: Level.Beginner,
 
       keyWords: ['html', 'css', 'javascript'],
-      cotegories: ['Web Development'],
-      instructors: ['Sarra T.'],
+      categories: ['Web Development'],
+      instructors: [this.instructorList()[1]],
       sessions: [],
     },
     {
@@ -42,8 +45,8 @@ export class CourseService {
       level: Level.Intermediate,
 
       keyWords: ['flutter', 'dart', 'mobile'],
-      cotegories: ['Mobile', 'Development'],
-      instructors: ['Mohamed C.'],
+      categories: ['Mobile', 'Development'],
+      instructors: [this.instructorList()[2]],
       sessions: [],
     },
     {
@@ -54,8 +57,8 @@ export class CourseService {
       program: '',
       level: Level.Beginner,
       keyWords: ['sql', 'queries', 'mysql'],
-      cotegories: ['Data'],
-      instructors: ['Amira H.'],
+      categories: ['Data'],
+      instructors: [this.instructorList()[0], this.instructorList()[1]],
       sessions: [],
     },
     {
@@ -66,8 +69,8 @@ export class CourseService {
       program: '',
       level: Level.Intermediate,
       keyWords: ['machine learning', 'python', 'models'],
-      cotegories: ['Artificial Intelligence'],
-      instructors: ['Dr. Walid K.'],
+      categories: ['Artificial Intelligence'],
+      instructors: [this.instructorList()[1], this.instructorList()[2]],
       sessions: [],
     },
     {
@@ -79,15 +82,16 @@ export class CourseService {
       program: '',
       level: Level.Advanced,
       keyWords: ['solid', 'clean code', 'design patterns'],
-      cotegories: ['Development'],
-      instructors: ['Youssef M.'],
+      categories: ['Development'],
+      instructors: [this.instructorList()[0], this.instructorList()[1]],
       sessions: [],
     },
   ]);
 
-  constructor() {
+  constructor(private instructorService: InstructorService) {
     const courses = localStorage.getItem('courses');
     if (courses) this.coursesList.set(JSON.parse(courses!));
+    this.instructorList.set(instructorService.getInstructors());
   }
 
   getCourses() {
@@ -98,9 +102,17 @@ export class CourseService {
     return this.coursesList().find((course) => course.id === courseId);
   }
 
-  saveCourses() {
-    const courses = JSON.stringify(this.coursesList());
-    localStorage.setItem('courses', courses);
+  addNewCourse(course: CourseModel) {
+    this.coursesList().push(course);
+    this.saveCourses();
+  }
+
+  removeCourse(courseId: number) {
+    this.coursesList.set(this.coursesList().filter((course) => course.id !== courseId));
+  }
+
+  getLastId() {
+    return this.coursesList()[this.coursesList.length]['id'];
   }
 
   getCourseByKeyWords(text: string) {
@@ -110,5 +122,14 @@ export class CourseService {
         course.description.toLowerCase().includes(text.toLowerCase()) ||
         course.keyWords.includes(text.toLowerCase()),
     );
+  }
+
+  findInstructors() {
+    return [this.instructorList()[0], this.instructorList()[1]];
+  }
+
+  saveCourses() {
+    const courses = JSON.stringify(this.coursesList());
+    localStorage.setItem('courses', courses);
   }
 }

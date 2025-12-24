@@ -27,7 +27,6 @@ export class EnrollCourse {
   // Hide the sign-up form
   hideDialogEvenet = output<boolean>();
   onHideDialog() {
-    console.log(this.fName);
     this.hideDialogEvenet.emit(true);
   }
 

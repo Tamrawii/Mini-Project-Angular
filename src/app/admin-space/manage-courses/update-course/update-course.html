@@ -1,0 +1,71 @@
+<div class="backdrop" (click)="onHideDialog()"></div>
+<dialog open>
+  <h2>Update course N° {{ instructorData().id }} data</h2>
+  <form (ngSubmit)="onSubmit()" class="mt-4" #f="ngForm">
+    <div class="d-flex gap-4">
+      <div>
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          placeholder="Enter your first name"
+          required
+          [(ngModel)]="title"
+          #enteredTitle="ngModel"
+        />
+        <!--Input validator-->
+        @if(enteredTitle.invalid && (enteredTitle.dirty || enteredTitle.touched)) {
+        @if(enteredTitle.hasError('required')) {
+        <div class="invalid-feedback">This field is required</div>
+        }}
+      </div>
+      <div>
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          class="form-control"
+          id="description"
+          name="description"
+          placeholder="Enter your last name"
+          required
+          [(ngModel)]="description"
+          #enteredDescription="ngModel"
+          rows="8"
+          cols="80"
+        ></textarea>
+
+        <!--Input validator-->
+        @if(enteredDescription.invalid && (enteredDescription.dirty || enteredDescription.touched))
+        { @if(enteredDescription.hasError('required')) {
+        <div class="invalid-feedback">This field is required</div>
+        }}
+      </div>
+    </div>
+    <div>
+      <label for="duration" class="form-label mt-4">Duration</label>
+      <input
+        type="number"
+        class="form-control"
+        id="duration"
+        name="duration"
+        required
+        placeholder="Enter duration"
+        [(ngModel)]="duration"
+        #enteredDuration="ngModel"
+      />
+      <!--Input validator-->
+      @if(enteredDuration.invalid && (enteredDuration.dirty || enteredDuration.touched)) {
+      @if(enteredDuration.hasError('required')) {
+      <div class="invalid-feedback">This field is required</div>
+      } }
+    </div>
+
+    <div class="actions mt-3 d-flex justify-content-end gap-3">
+      <button type="button" (click)="onHideDialog()" class="btn btn-outline-secondary">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-outline-primary">Update</button>
+    </div>
+  </form>
+</dialog>

@@ -1,3 +1,4 @@
+import { InstructorModel } from '../../admin-space/manage-instructors/instructor.model';
 import { SessionModel } from '../../course-details/session-details/session.model';
 
 export enum Level {
@@ -14,7 +15,7 @@ export interface CourseModel {
   program: string;
   level: Level;
   keyWords: string[];
-  cotegories: string[];
-  instructors: string[];
+  categories: string[];
+  instructors: InstructorModel[];
   sessions: SessionModel[];
 }
