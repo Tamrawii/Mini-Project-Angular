@@ -2,7 +2,7 @@
   <div class="card">
     <div class="Category">
       <ul>
-        @for(category of course().cotegories; track category) {
+        @for(category of course().categories; track category) {
         <li>{{category}}</li>
         }
       </ul>
@@ -17,20 +17,9 @@
     </div>
 
     <div class="details">
-      <!--<i class="bi bi-reception-4"></i>-->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        class="bi bi-reception-4"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M0 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5z"
-        />
-      </svg>
+      <i class="bi bi-reception-4"></i>
       <span class="level">{{ course().level }}</span>
+      <i class="bi bi-clock-fill"></i>
       <span class="duration">{{ course().duration }} hrous</span>
     </div>
   </div>

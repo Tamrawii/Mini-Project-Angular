@@ -2,12 +2,17 @@ import { Injectable, InputSignal, signal } from '@angular/core';
 import { Level, type CourseModel } from './course.model';
 import { InstructorService } from '../../admin-space/manage-instructors/instructor.service';
 import { InstructorModel } from '../../admin-space/manage-instructors/instructor.model';
+import { SessionService } from '../../course-details/details-card/session.service';
+import { CategoryService } from '../../admin-space/manage-courses/category.service';
+import { CategoryModel } from '../../admin-space/manage-courses/category.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseService {
   private instructorList = signal<InstructorModel[]>([]);
+  private categoriesList = signal<CategoryModel[]>([]);
+
   private coursesList = signal<CourseModel[]>([
     {
       id: 1,
@@ -18,7 +23,7 @@ export class CourseService {
       program: '',
       level: Level.Beginner,
       keyWords: ['algorithms', 'variables', 'loops'],
-      categories: ['Computer Science', 'Development'],
+      categories: [this.categoriesList()[0]],
       instructors: [this.instructorList()[0]],
       sessions: [],
     },
@@ -31,7 +36,7 @@ export class CourseService {
       level: Level.Beginner,
 
       keyWords: ['html', 'css', 'javascript'],
-      categories: ['Web Development'],
+      categories: [this.categoriesList()[0]],
       instructors: [this.instructorList()[1]],
       sessions: [],
     },
@@ -45,7 +50,7 @@ export class CourseService {
       level: Level.Intermediate,
 
       keyWords: ['flutter', 'dart', 'mobile'],
-      categories: ['Mobile', 'Development'],
+      categories: [this.categoriesList()[1], this.categoriesList()[2]],
       instructors: [this.instructorList()[2]],
       sessions: [],
     },
@@ -57,7 +62,7 @@ export class CourseService {
       program: '',
       level: Level.Beginner,
       keyWords: ['sql', 'queries', 'mysql'],
-      categories: ['Data'],
+      categories: [this.categoriesList()[3]],
       instructors: [this.instructorList()[0], this.instructorList()[1]],
       sessions: [],
     },
@@ -69,7 +74,7 @@ export class CourseService {
       program: '',
       level: Level.Intermediate,
       keyWords: ['machine learning', 'python', 'models'],
-      categories: ['Artificial Intelligence'],
+      categories: [this.categoriesList()[3], this.categoriesList()[2]],
       instructors: [this.instructorList()[1], this.instructorList()[2]],
       sessions: [],
     },
@@ -82,16 +87,20 @@ export class CourseService {
       program: '',
       level: Level.Advanced,
       keyWords: ['solid', 'clean code', 'design patterns'],
-      categories: ['Development'],
+      categories: [this.categoriesList()[0], this.categoriesList()[1]],
       instructors: [this.instructorList()[0], this.instructorList()[1]],
       sessions: [],
     },
   ]);
 
-  constructor(private instructorService: InstructorService) {
+  constructor(
+    private instructorService: InstructorService,
+    private categoryService: CategoryService,
+  ) {
     const courses = localStorage.getItem('courses');
     if (courses) this.coursesList.set(JSON.parse(courses!));
     this.instructorList.set(instructorService.getInstructors());
+    this.categoriesList.set(categoryService.getCategories());
   }
 
   getCourses() {
@@ -104,15 +113,24 @@ export class CourseService {
 
   addNewCourse(course: CourseModel) {
     this.coursesList().push(course);
-    this.saveCourses();
+    this.saveSessions();
+  }
+
+  updateCourse(course: CourseModel) {
+    let courseIndex = this.coursesList().findIndex((c) => c.id === course.id);
+    this.coursesList()[courseIndex] = course;
+    this.saveSessions();
   }
 
   removeCourse(courseId: number) {
     this.coursesList.set(this.coursesList().filter((course) => course.id !== courseId));
+    this.saveSessions();
   }
 
   getLastId() {
-    return this.coursesList()[this.coursesList.length]['id'];
+    return this.coursesList().length !== 0
+      ? this.coursesList()[this.coursesList().length - 1].id
+      : 0;
   }
 
   getCourseByKeyWords(text: string) {
@@ -124,11 +142,19 @@ export class CourseService {
     );
   }
 
-  findInstructors() {
-    return [this.instructorList()[0], this.instructorList()[1]];
+  filterCatgory(categoryId: number) {
+    return this.coursesList().filter(
+      (course) => course.categories.filter((category) => category.id === categoryId).length !== 0,
+    );
   }
 
-  saveCourses() {
+  findInstructors(instructors: number[]) {
+    return this.instructorList().filter((instructor) =>
+      instructors.find((id) => +id === instructor.id),
+    );
+  }
+
+  saveSessions() {
     const courses = JSON.stringify(this.coursesList());
     localStorage.setItem('courses', courses);
   }

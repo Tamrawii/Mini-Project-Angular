@@ -81,25 +81,20 @@ export class InstructorService {
     this.saveSessions();
   }
 
-  updateInstructor(candidate: InstructorModel) {
-    let dummyList = signal<InstructorModel[]>([]);
-    this.instructorsList().forEach((c) => {
-      if (c.id === candidate.id) dummyList().push(candidate);
-      else dummyList().push(c);
-    });
-    this.instructorsList.set(dummyList());
+  updateInstructor(instructor: InstructorModel) {
+    let instructorIndex = this.instructorsList().findIndex((i) => i.id === instructor.id);
+    this.instructorsList()[instructorIndex] = instructor;
     this.saveSessions();
   }
 
-  removeInstructor(candidateId: number) {
+  removeInstructor(instructorId: number) {
     this.instructorsList.set(
-      this.instructorsList().filter((candidate) => candidate.id !== candidateId),
+      this.instructorsList().filter((instructor) => instructor.id !== instructorId),
     );
     this.saveSessions();
   }
 
   getLastId() {
-    console.log(this.instructorsList()[this.instructorsList().length - 1].id);
     return this.instructorsList().length !== 0
       ? this.instructorsList()[this.instructorsList().length - 1].id
       : 0;

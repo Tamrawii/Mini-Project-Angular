@@ -7,7 +7,7 @@ a {
   border-radius: 18px;
   border: 0.8px solid grey;
   padding: 22px;
-  min-height: 260px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,7 +28,6 @@ a {
   justify-content: start;
   grid-auto-flow: column;
   gap: 8px;
-  margin: 0;
   padding: 0;
 }
 
@@ -51,6 +50,10 @@ a {
 }
 
 /* DESCRIPTION */
+.description {
+  flex-grow: 1;
+}
+
 .description p {
   font-size: 14px;
   color: #2c3b4f;
@@ -68,6 +71,7 @@ a {
   gap: 8px;
   font-weight: 500;
   color: #1b2533;
+  margin-top: auto;
 }
 
 .details .level {
@@ -76,8 +80,8 @@ a {
 
 /* OPTIONAL WRAPPER FOR GRID */
 .card-container {
-  display: flex;
+  display: grid;
   gap: 24px;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   margin-top: 20px;
 }

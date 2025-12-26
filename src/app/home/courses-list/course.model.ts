@@ -1,3 +1,4 @@
+import { CategoryModel } from '../../admin-space/manage-courses/category.model';
 import { InstructorModel } from '../../admin-space/manage-instructors/instructor.model';
 import { SessionModel } from '../../course-details/session-details/session.model';
 
@@ -15,7 +16,7 @@ export interface CourseModel {
   program: string;
   level: Level;
   keyWords: string[];
-  categories: string[];
+  categories: CategoryModel[];
   instructors: InstructorModel[];
   sessions: SessionModel[];
 }

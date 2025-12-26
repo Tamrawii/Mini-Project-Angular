@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <h1 class="mb-4 text-center">Learn from 350+ leading universities and companies</h1>
 
   <div class="input-group mb-5">
@@ -14,9 +14,17 @@
     </button>
   </div>
 
+  @if(coursesList().length > 1) {
   <section class="courses-list">
-    @for (course of coursesList(); track course.id) { @if(course.id != -1){
+    @for (course of coursesList(); track course.id) {
     <app-card [course]="course"></app-card>
-    } }
+    }
   </section>
+  } @else if(coursesList().length === 0 && searchFlag() === true) {
+  <div class="no-courses-container">
+    <img src="img/illustrations/not_found.svg" alt="No courses found" class="no-courses-image" />
+    <h3 class="no-courses-text">No courses available</h3>
+    <p class="no-courses-subtext">Check back soon for new courses or explore other courses</p>
+  </div>
+  }
 </div>

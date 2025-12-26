@@ -52,5 +52,6 @@ export class ManageInstructors {
 
   onHideAddDialog(status: boolean) {
     this.toggleAddDialog.set(status);
+    this.instructorsList.set(this.instructorService.getInstructors());
   }
 }

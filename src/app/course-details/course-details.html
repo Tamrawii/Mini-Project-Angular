@@ -1,14 +1,16 @@
-<app-enroll-course
-  [class.hidden]="isHidden"
-  (hideDialogEvenet)="onCloseDialog($event)"
-  [courseID]="courseId"
-  [sessionID]="selectedSession"
-></app-enroll-course>
-<app-details-card
-  [courseDetails]="courseDetails()"
-  [totalLearners]="getTotalCourseLearners()"
-></app-details-card>
-<app-session-details
-  [sessionsList]="sessionsList()"
-  (signupEvent)="onSignupClick($event)"
-></app-session-details>
+<div class="mb-5">
+  <app-enroll-course
+    [class.hidden]="isHidden"
+    (hideDialogEvenet)="onCloseDialog($event)"
+    [courseID]="courseId"
+    [sessionID]="selectedSession"
+  ></app-enroll-course>
+  <app-details-card
+    [courseDetails]="courseDetails()"
+    [totalLearners]="getTotalCourseLearners()"
+  ></app-details-card>
+  <app-session-details
+    [sessionsList]="sessionsList()"
+    (signupEvent)="onSignupClick($event)"
+  ></app-session-details>
+</div>

@@ -8,7 +8,7 @@ export interface SessionModel {
   id: number;
   courseId: number;
   location: string;
-  staringDate: string;
+  startingDate: string;
   finishingDate: string;
   language: Language;
   enrolledPlaces: number;

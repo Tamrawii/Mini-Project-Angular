@@ -51,14 +51,14 @@ export class AddInstructor {
     ) {
       let instructor: InstructorModel = {
         id: this.instructorService.getLastId() + 1,
-        firstName: this.fName,
-        lastName: this.lName,
-        email: this.email,
-        phone: this.phone,
-        CIN: this.idNum,
-        photo: this.photo,
-        CV: this.cv,
-        skills: this.skills.split(','),
+        firstName: this.fName.trim(),
+        lastName: this.lName.trim(),
+        email: this.email.trim(),
+        phone: this.phone.trim(),
+        CIN: this.idNum.trim(),
+        photo: this.photo.trim(),
+        CV: this.cv.trim(),
+        skills: this.skills.trim().split(','),
       };
 
       this.instructorService.addNewInstructor(instructor);

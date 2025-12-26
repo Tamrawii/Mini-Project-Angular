@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Language, SessionModel } from '../session-details/session.model';
+import { forEachChild } from 'typescript';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class SessionService {
       id: 1,
       courseId: 1,
       location: 'Tunis',
-      staringDate: '2025-01-10',
+      startingDate: '2025-01-10',
       finishingDate: '2025-01-12',
       language: Language.French,
       enrolledPlaces: 15,
@@ -20,7 +21,7 @@ export class SessionService {
       id: 2,
       courseId: 1,
       location: 'Sousse',
-      staringDate: '2025-02-05',
+      startingDate: '2025-02-05',
       finishingDate: '2025-02-07',
       language: Language.English,
       enrolledPlaces: 4,
@@ -31,7 +32,7 @@ export class SessionService {
       id: 3,
       courseId: 2,
       location: 'Online',
-      staringDate: '2025-03-01',
+      startingDate: '2025-03-01',
       finishingDate: '2025-03-03',
       language: Language.French,
       enrolledPlaces: 12,
@@ -40,7 +41,7 @@ export class SessionService {
       id: 4,
       courseId: 2,
       location: 'Tunis',
-      staringDate: '2025-03-20',
+      startingDate: '2025-03-20',
       finishingDate: '2025-03-22',
       language: Language.French,
       enrolledPlaces: 7,
@@ -51,7 +52,7 @@ export class SessionService {
       id: 5,
       courseId: 3,
       location: 'Sfax',
-      staringDate: '2025-04-02',
+      startingDate: '2025-04-02',
       finishingDate: '2025-04-05',
       language: Language.English,
       enrolledPlaces: 5,
@@ -60,7 +61,7 @@ export class SessionService {
       id: 6,
       courseId: 3,
       location: 'Online',
-      staringDate: '2025-04-15',
+      startingDate: '2025-04-15',
       finishingDate: '2025-04-17',
       language: Language.French,
       enrolledPlaces: 9,
@@ -71,7 +72,7 @@ export class SessionService {
       id: 7,
       courseId: 4,
       location: 'Tunis',
-      staringDate: '2025-05-10',
+      startingDate: '2025-05-10',
       finishingDate: '2025-05-12',
       language: Language.English,
       enrolledPlaces: 1,
@@ -80,7 +81,7 @@ export class SessionService {
       id: 8,
       courseId: 4,
       location: 'Sousse',
-      staringDate: '2025-05-25',
+      startingDate: '2025-05-25',
       finishingDate: '2025-05-27',
       language: Language.French,
       enrolledPlaces: 4,
@@ -91,7 +92,7 @@ export class SessionService {
       id: 9,
       courseId: 5,
       location: 'Online',
-      staringDate: '2025-06-01',
+      startingDate: '2025-06-01',
       finishingDate: '2025-06-03',
       language: Language.English,
       enrolledPlaces: 3,
@@ -100,7 +101,7 @@ export class SessionService {
       id: 10,
       courseId: 5,
       location: 'Tunis',
-      staringDate: '2025-06-15',
+      startingDate: '2025-06-15',
       finishingDate: '2025-06-17',
       language: Language.French,
       enrolledPlaces: 8,
@@ -111,7 +112,7 @@ export class SessionService {
       id: 11,
       courseId: 6,
       location: 'Sfax',
-      staringDate: '2025-07-05',
+      startingDate: '2025-07-05',
       finishingDate: '2025-07-07',
       language: Language.French,
       enrolledPlaces: 6,
@@ -120,7 +121,7 @@ export class SessionService {
       id: 12,
       courseId: 6,
       location: 'Online',
-      staringDate: '2025-07-20',
+      startingDate: '2025-07-20',
       finishingDate: '2025-07-22',
       language: Language.English,
       enrolledPlaces: 2,
@@ -131,7 +132,7 @@ export class SessionService {
       id: 13,
       courseId: 3,
       location: 'Tunis',
-      staringDate: '2025-08-01',
+      startingDate: '2025-08-01',
       finishingDate: '2025-08-03',
       language: Language.English,
       enrolledPlaces: 10,
@@ -161,11 +162,28 @@ export class SessionService {
     return total;
   }
 
-  addNewLearner(courseID: number, sessionID: number) {
-    this.sessionsList().find(
-      (session) => session.courseId === +courseID && session.id === sessionID,
-    )!.enrolledPlaces++;
+  addNewSession(session: SessionModel) {
+    this.sessionsList().push(session);
     this.saveSessions();
+  }
+
+  addNewLearner(courseID: number, sessionID: number) {
+    let selectedSession = this.sessionsList().findIndex(
+      (session) => session.courseId === +courseID && session.id === sessionID,
+    );
+    this.sessionsList()[selectedSession].enrolledPlaces++;
+    console.log(this.sessionsList()[selectedSession].enrolledPlaces);
+    this.saveSessions();
+  }
+
+  getTotalCourseSessions(courseId: number) {
+    let total = 0;
+    this.sessionsList().forEach((session) => (session.courseId === courseId ? total++ : 0));
+    return total;
+  }
+
+  getLastId() {
+    return this.sessionsList()[this.sessionsList().length - 1].id;
   }
 
   saveSessions() {

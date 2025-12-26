@@ -128,9 +128,9 @@
         [(ngModel)]="categories"
         #enteredCategories="ngModel"
       >
-        <option value="Web development">Web development</option>
-        <option value="Mobile development">Mobile development</option>
-        <option value="Artificial Intelligence">Artificial Intelligence</option>
+        @for(category of categoriesList(); track category.id){
+        <option value="{{category.id}}">{{ category.label}}</option>
+        }
       </select>
     </div>
 
@@ -141,12 +141,15 @@
         class="form-select"
         id="instructors"
         name="instructors"
-        multiple=""
         required
         [(ngModel)]="instructors"
         #enteredInsctructors="ngModel"
       >
-        <option value=""></option>
+        @for(instructor of instructorsList(); track instructor.id) {
+        <option value="{{ instructor['id'] }}">
+          {{ instructor["firstName"] }} {{ instructor["lastName"] }}
+        </option>
+        }
       </select>
     </div>
 

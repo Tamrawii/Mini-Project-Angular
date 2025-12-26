@@ -1,11 +1,15 @@
-<!--@if(toggleUpdateDialog()) {
-<app-update-instructors
+@if(toggleUpdateDialog()) {
+<app-update-course
   (hideDialogEvenet)="onHideUpdateDialog($event)"
-  [instructorData]="selectedInstructor()"
-></app-update-instructors>
-}-->
-@if(toggleAddDialog()) {
+  [courseData]="selectedCourse()"
+></app-update-course>
+} @if(toggleAddDialog()) {
 <app-add-course (hideDialogEvenet)="onHideAddDialog($event)"></app-add-course>
+} @if(toggleAddSessionDialog()) {
+<app-add-session
+  [selectedCourseId]="selectedCourse().id"
+  (hideDialogEvenet)="onHideAddSessionDialog($event)"
+></app-add-session>
 }
 <div class="container mt-5 mb-5">
   <h1>Manage Courses & Sessions</h1>
@@ -28,6 +32,7 @@
         <th scope="col">Keywords</th>
         <th scope="col">Categories</th>
         <th scope="col">Total sessions</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -44,12 +49,16 @@
           @for(category of course.categories; track category) {
           <span class="badge rounded-pill bg-info"> {{ category }} </span>}
         </td>
+        <td>{{ getTotalSessionsNumber(course.id) }}</td>
         <td>
           <button (click)="onShowUpdateDialog(course)" class="btn btn-outline-primary">
             Update
           </button>
 
           <button (click)="removeCourse(course.id)" class="btn btn-outline-danger">Delete</button>
+          <button (click)="onShowAddSessionDialog(course)" class="btn btn-outline-info">
+            New session
+          </button>
         </td>
       </tr>
       }

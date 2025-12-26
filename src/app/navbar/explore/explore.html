@@ -1,0 +1,15 @@
+<div class="container mt-5 mb-5">
+  @if(coursesList().length > 0) {
+  <section class="courses-list">
+    @for (course of coursesList(); track course.id) {
+    <app-card [course]="course"></app-card>
+    }
+  </section>
+  } @else {
+  <div class="no-courses-container">
+    <img src="img/illustrations/not_found.svg" alt="No courses found" class="no-courses-image" />
+    <h3 class="no-courses-text">No courses available in this category</h3>
+    <p class="no-courses-subtext">Check back soon for new courses or explore other categories</p>
+  </div>
+  }
+</div>

@@ -59,11 +59,11 @@ export class UpdateInstructors {
     ) {
       let instructor: InstructorModel = {
         id: this.instructorData().id,
-        firstName: this.fName,
-        lastName: this.lName,
-        email: this.email,
-        phone: this.phone,
-        CIN: this.idNum,
+        firstName: this.fName.trim(),
+        lastName: this.lName.trim(),
+        email: this.email.trim(),
+        phone: this.phone.trim(),
+        CIN: this.idNum.trim(),
         photo: '',
         CV: '',
         skills: this.skills.split(','),

@@ -36,7 +36,7 @@ export class CourseDetails {
       id: 0,
       courseId: 0,
       location: 'string',
-      staringDate: 'string',
+      startingDate: 'string',
       finishingDate: 'string',
       language: Language.Arabic,
       enrolledPlaces: 0,

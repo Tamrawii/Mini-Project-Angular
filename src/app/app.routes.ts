@@ -6,6 +6,8 @@ import { AdminSpace } from './admin-space/admin-space';
 import { ManageLearners } from './admin-space/manage-learners/manage-learners';
 import { ManageInstructors } from './admin-space/manage-instructors/manage-instructors';
 import { ManageCourses } from './admin-space/manage-courses/manage-courses';
+import { Explore } from './navbar/explore/explore';
+import { PageNotFound } from './page-not-found/page-not-found';
 
 export const routes: Routes = [
   {
@@ -37,7 +39,11 @@ export const routes: Routes = [
     component: ManageCourses,
   },
   {
+    path: 'explore/:category',
+    component: Explore,
+  },
+  {
     path: '**',
-    redirectTo: '',
+    component: PageNotFound,
   },
 ];

@@ -72,12 +72,8 @@ export class CandidateService {
   }
 
   updateCandidate(candidate: CandidateModel) {
-    let dummyList = signal<CandidateModel[]>([]);
-    this.candidatesList().forEach((c) => {
-      if (c.id === candidate.id) dummyList().push(candidate);
-      else dummyList().push(c);
-    });
-    this.candidatesList.set(dummyList());
+    let candidateIndex = this.candidatesList().findIndex((c) => c.id === candidate.id);
+    this.candidatesList()[candidateIndex] = candidate;
     this.saveSessions();
   }
 

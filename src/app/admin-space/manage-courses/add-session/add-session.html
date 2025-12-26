@@ -1,0 +1,86 @@
+<div class="backdrop" (click)="onHideDialog()"></div>
+<dialog open>
+  <h2>Add new session</h2>
+  <form (ngSubmit)="onSubmit()" class="mt-4" #f="ngForm">
+    <div>
+      <label for="location" class="form-label">Location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="location"
+        name="location"
+        placeholder="Choose location"
+        required
+        [(ngModel)]="location"
+        #enteredLocation="ngModel"
+      />
+      <!--Input validator-->
+      @if(enteredLocation.invalid && (enteredLocation.dirty || enteredLocation.touched)) {
+      @if(enteredLocation.hasError('required')) {
+      <div class="invalid-feedback">This field is required</div>
+      }}
+    </div>
+    <div class="d-flex gap-4">
+      <div class="flex-grow-1">
+        <label for="startingDate" class="form-label mt-4">Starting Date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="startingDate"
+          name="startingDate"
+          placeholder="Choose the starting date"
+          required
+          [(ngModel)]="startingDate"
+          #enteredSDate="ngModel"
+        />
+
+        <!--Input validator-->
+        @if(enteredSDate.invalid && (enteredSDate.dirty || enteredSDate.touched)) {
+        @if(enteredSDate.hasError('required')) {
+        <div class="invalid-feedback">This field is required</div>
+        }}
+      </div>
+      <div class="flex-grow-1">
+        <label for="sDate" class="form-label mt-4">Finishing Date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="fDate"
+          name="fDate"
+          placeholder="Choose the starting date"
+          required
+          [(ngModel)]="finishingDate"
+          #enteredFDate="ngModel"
+        />
+
+        <!--Input validator-->
+        @if(enteredFDate.invalid && (enteredFDate.dirty || enteredFDate.touched)) {
+        @if(enteredFDate.hasError('required')) {
+        <div class="invalid-feedback">This field is required</div>
+        }}
+      </div>
+    </div>
+    <div>
+      <label for="lang" class="form-label mt-4">Language</label>
+      <select
+        class="form-select"
+        id="lang"
+        name="lang"
+        required
+        [(ngModel)]="language"
+        #enteredLanguage="ngModel"
+      >
+        <option value="ar">Arbic</option>
+        <option value="en">English</option>
+        <option value="fr">French</option>
+      </select>
+    </div>
+
+    <div class="actions mt-3 d-flex justify-content-end gap-3">
+      <button type="button" (click)="onHideDialog()" class="btn btn-outline-secondary">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-outline-primary">Create</button>
+    </div>
+  </form>
+</dialog>

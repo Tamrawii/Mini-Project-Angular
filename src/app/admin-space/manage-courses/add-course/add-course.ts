@@ -3,12 +3,14 @@ import { CourseModel, Level } from '../../../home/courses-list/course.model';
 import { CourseService } from '../../../home/courses-list/course.service';
 import { FormsModule } from '@angular/forms';
 import { InstructorService } from '../../manage-instructors/instructor.service';
+import { InstructorModel } from '../../manage-instructors/instructor.model';
+import { CategoryService } from '../category.service';
+import { CategoryModel } from '../category.model';
 
 @Component({
   selector: 'app-add-course',
   imports: [FormsModule],
   templateUrl: './add-course.html',
-  template: '',
   styleUrl: './add-course.css',
 })
 export class AddCourse {
@@ -24,19 +26,26 @@ export class AddCourse {
     instructors: [],
     sessions: [],
   });
+  instructorsList = signal<InstructorModel[]>([]);
+  categoriesList = signal<CategoryModel[]>([]);
+
   title!: string;
   description!: string;
   duration!: string;
   program!: string;
   level!: string;
   keyWords!: string;
-  categories!: string;
-  instructors!: string;
+  categories!: [];
+  instructors!: [];
 
   constructor(
     private courseService: CourseService,
     private instructorService: InstructorService,
-  ) {}
+    private categoryService: CategoryService,
+  ) {
+    this.instructorsList.set(instructorService.getInstructors());
+    this.categoriesList.set(categoryService.getCategories());
+  }
 
   hideDialogEvenet = output<boolean>();
   onHideDialog() {
@@ -56,19 +65,19 @@ export class AddCourse {
     ) {
       let course: CourseModel = {
         id: this.courseService.getLastId() + 1,
-        title: this.title,
-        description: this.description,
+        title: this.title.trim(),
+        description: this.description.trim(),
         duration: +this.duration,
-        program: this.program,
+        program: this.program.trim(),
         level:
           this.level === 'b'
             ? Level.Beginner
             : this.level === 'a'
               ? Level.Advanced
               : Level.Intermediate,
-        keyWords: this.keyWords.split(','),
-        categories: this.categories.split(','),
-        instructors: this.courseService.findInstructors(),
+        keyWords: this.keyWords.trim().split(','),
+        categories: this.categories,
+        instructors: this.courseService.findInstructors(this.instructors),
         sessions: [],
       };
 

@@ -13,6 +13,7 @@ import { Card } from '../home/courses-list/card/card';
 })
 export class Search {
   enteredText!: string;
+  searchFlag = signal<boolean>(false);
   coursesList = signal<CourseModel[]>([
     {
       id: -1,
@@ -24,17 +25,7 @@ export class Search {
       keyWords: [],
       categories: [],
       instructors: [],
-      sessions: [
-        {
-          id: 0,
-          courseId: 0,
-          location: '',
-          staringDate: '',
-          finishingDate: '',
-          language: Language.Arabic,
-          enrolledPlaces: 0,
-        },
-      ],
+      sessions: [],
     },
   ]);
 
@@ -42,5 +33,6 @@ export class Search {
 
   onSearch() {
     this.coursesList.set(this.courseService.getCourseByKeyWords(this.enteredText));
+    this.searchFlag.set(true);
   }
 }
