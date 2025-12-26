@@ -39,7 +39,7 @@ export const routes: Routes = [
     component: ManageCourses,
   },
   {
-    path: 'explore/:category',
+    path: 'explore/:categoryId',
     component: Explore,
   },
   {

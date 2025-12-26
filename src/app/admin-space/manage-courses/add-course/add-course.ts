@@ -2,8 +2,6 @@ import { Component, output, signal } from '@angular/core';
 import { CourseModel, Level } from '../../../home/courses-list/course.model';
 import { CourseService } from '../../../home/courses-list/course.service';
 import { FormsModule } from '@angular/forms';
-import { InstructorService } from '../../manage-instructors/instructor.service';
-import { InstructorModel } from '../../manage-instructors/instructor.model';
 import { CategoryService } from '../category.service';
 import { CategoryModel } from '../category.model';
 
@@ -23,10 +21,8 @@ export class AddCourse {
     level: Level.Beginner,
     keyWords: [],
     categories: [],
-    instructors: [],
     sessions: [],
   });
-  instructorsList = signal<InstructorModel[]>([]);
   categoriesList = signal<CategoryModel[]>([]);
 
   title!: string;
@@ -36,14 +32,11 @@ export class AddCourse {
   level!: string;
   keyWords!: string;
   categories!: [];
-  instructors!: [];
 
   constructor(
     private courseService: CourseService,
-    private instructorService: InstructorService,
     private categoryService: CategoryService,
   ) {
-    this.instructorsList.set(instructorService.getInstructors());
     this.categoriesList.set(categoryService.getCategories());
   }
 
@@ -60,8 +53,7 @@ export class AddCourse {
       this.program !== undefined &&
       this.level !== undefined &&
       this.keyWords !== undefined &&
-      this.categories !== undefined &&
-      this.instructors !== undefined
+      this.categories !== undefined
     ) {
       let course: CourseModel = {
         id: this.courseService.getLastId() + 1,
@@ -77,7 +69,6 @@ export class AddCourse {
               : Level.Intermediate,
         keyWords: this.keyWords.trim().split(','),
         categories: this.categories,
-        instructors: this.courseService.findInstructors(this.instructors),
         sessions: [],
       };
 

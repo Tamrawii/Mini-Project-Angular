@@ -2,8 +2,8 @@
   <div class="card">
     <div class="Category">
       <ul>
-        @for(category of course().categories; track category) {
-        <li>{{category}}</li>
+        @for(category of course().categories; track category.id) {
+        <li>{{category.label}}</li>
         }
       </ul>
     </div>

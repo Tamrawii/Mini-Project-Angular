@@ -19,7 +19,7 @@ export class UpdateCourse {
     level: Level.Beginner,
     keyWords: [],
     categories: [],
-    instructors: [],
+    // instructors: [],
     sessions: [],
   });
   title!: string;
@@ -57,7 +57,7 @@ export class UpdateCourse {
         level: this.courseData().level,
         keyWords: this.courseData().keyWords,
         categories: this.courseData().categories,
-        instructors: this.courseData().instructors,
+        // instructors: this.courseData().instructors,
         sessions: this.courseData().sessions,
       };
 

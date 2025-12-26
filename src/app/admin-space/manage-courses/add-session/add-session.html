@@ -76,6 +76,25 @@
       </select>
     </div>
 
+    <div>
+      <label for="instructors" class="form-label mt-4">Instructors</label>
+      <select
+        multiple=""
+        class="form-select"
+        id="instructors"
+        name="instructors"
+        required
+        [(ngModel)]="instructors"
+        #enteredInsctructors="ngModel"
+      >
+        @for(instructor of instructorsList(); track instructor.id) {
+        <option value="{{ instructor['id'] }}">
+          {{ instructor["firstName"] }} {{ instructor["lastName"] }}
+        </option>
+        }
+      </select>
+    </div>
+
     <div class="actions mt-3 d-flex justify-content-end gap-3">
       <button type="button" (click)="onHideDialog()" class="btn btn-outline-secondary">
         Cancel

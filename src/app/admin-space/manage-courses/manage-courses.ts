@@ -27,7 +27,6 @@ export class ManageCourses {
     level: Level.Beginner,
     keyWords: [],
     categories: [],
-    instructors: [],
     sessions: [],
   });
 

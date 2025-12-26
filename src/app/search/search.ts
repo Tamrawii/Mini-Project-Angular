@@ -24,7 +24,6 @@ export class Search {
       level: Level.Beginner,
       keyWords: [],
       categories: [],
-      instructors: [],
       sessions: [],
     },
   ]);

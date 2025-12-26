@@ -4,6 +4,7 @@ import { InstructorModel } from '../../manage-instructors/instructor.model';
 import { SessionService } from '../../../course-details/details-card/session.service';
 import { InstructorService } from '../../manage-instructors/instructor.service';
 import { FormsModule } from '@angular/forms';
+import { CourseService } from '../../../home/courses-list/course.service';
 
 @Component({
   selector: 'app-add-session',
@@ -15,6 +16,7 @@ export class AddSession {
   sessionData = signal<SessionModel>({
     id: 0,
     courseId: 0,
+    instructors: [],
     location: '',
     startingDate: '',
     finishingDate: '',
@@ -24,6 +26,7 @@ export class AddSession {
   instructorsList = signal<InstructorModel[]>([]);
   selectedCourseId = input<number>(0);
 
+  instructors!: [];
   location!: string;
   startingDate!: string;
   finishingDate!: string;
@@ -46,11 +49,13 @@ export class AddSession {
       this.location !== undefined &&
       this.startingDate !== undefined &&
       this.finishingDate !== undefined &&
-      this.language !== undefined
+      this.language !== undefined &&
+      this.instructors !== undefined
     ) {
       let session: SessionModel = {
         id: this.sessionService.getLastId() + 1,
         courseId: this.selectedCourseId(),
+        instructors: this.sessionService.findInstructors(this.instructors),
         location: this.location.trim(),
         startingDate: this.startingDate.trim(),
         finishingDate: this.finishingDate.trim(),

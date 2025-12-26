@@ -23,7 +23,6 @@ export class Explore {
       level: Level.Beginner,
       keyWords: [],
       categories: [],
-      instructors: [],
       sessions: [],
     },
   ]);
@@ -33,13 +32,12 @@ export class Explore {
   constructor(
     private courseService: CourseService,
     private route: ActivatedRoute,
-  ) {
-    this.coursesList.set(courseService.filterCatgory(this.categoryId()));
-  }
+  ) {}
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe((params) => {
       this.categoryId.set(this.route.snapshot.params['categoryId']);
+      this.coursesList.set(this.courseService.filterCategory(+this.categoryId()));
     });
   }
 

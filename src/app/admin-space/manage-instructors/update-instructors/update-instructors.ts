@@ -29,9 +29,7 @@ export class UpdateInstructors {
   idNum!: string;
   skills!: string;
 
-  constructor(private instructorService: InstructorService) {
-    // console.log(this.instructorData());
-  }
+  constructor(private instructorService: InstructorService) {}
 
   ngOnInit(): void {
     this.fName = this.instructorData().firstName;

@@ -27,7 +27,6 @@ export class CourseDetails {
     level: Level.Beginner,
     keyWords: [],
     categories: [],
-    instructors: [],
     sessions: [],
   });
 
@@ -35,6 +34,7 @@ export class CourseDetails {
     {
       id: 0,
       courseId: 0,
+      instructors: [],
       location: 'string',
       startingDate: 'string',
       finishingDate: 'string',
