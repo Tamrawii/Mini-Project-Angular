@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CourseService } from '../home/courses-list/course.service';
 import { CourseModel, Level } from '../models/course.model';
 import { Language } from '../models/session.model';
 import { Card } from '../home/courses-list/card/card';
+import { CourseService } from '../services/course.service';
 
 @Component({
   selector: 'app-search',
@@ -32,6 +32,7 @@ export class Search {
 
   onSearch() {
     this.coursesList.set(this.courseService.getCourseByKeyWords(this.enteredText));
+    console.log(this.coursesList());
     this.searchFlag.set(true);
   }
 }

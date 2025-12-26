@@ -1,8 +1,8 @@
 import { Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SessionService } from '../details-card/session.service';
-import { CandidateService } from './candidate.service';
+import { SessionService } from '../../services/session.service';
 import { type CandidateModel } from '../../models/candidate.model';
+import { CandidateService } from '../../services/candidate.service';
 
 @Component({
   selector: 'app-enroll-course',

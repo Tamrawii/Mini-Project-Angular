@@ -93,17 +93,12 @@
                   d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
                 />
               </svg>
-              <strong>Instructors:</strong>
+              <h4 class="accordion-header">
+                Instructors: @for(instructor of session.instructors; track instructor.id) {
+                <strong>{{ instructor.firstName }} {{ instructor.lastName }}</strong>
+                @if(!$last){, } }
+              </h4>
             </span>
-            <ul class="list-unstyled ms-4">
-              @for(instructor of session.instructors; track instructor.id) {
-              <li class="mb-2">
-                <span class="badge bg-secondary"
-                  >{{ instructor.firstName }} {{ instructor.lastName }}</span
-                >
-              </li>
-              }
-            </ul>
           </div>
         </div>
       </div>

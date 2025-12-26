@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { CandidateService } from '../../course-details/enroll-course/candidate.service';
 import { UpdateLearner } from './update-learner/update-learner';
 import { CandidateModel } from '../../models/candidate.model';
+import { CandidateService } from '../../services/candidate.service';
 @Component({
   selector: 'app-manage-learners',
   imports: [UpdateLearner],

@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
-import { Language, SessionModel } from '../../models/session.model';
-import { InstructorService } from '../../admin-space/manage-instructors/instructor.service';
-import { InstructorModel } from '../../models/instructor.model';
+import { Language, SessionModel } from '../models/session.model';
+import { InstructorService } from './instructor.service';
+import { InstructorModel } from '../models/instructor.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +27,7 @@ export class SessionService {
       {
         id: 2,
         courseId: 1,
-        instructors: [this.instructorList()[0], this.instructorList()[1]],
+        instructors: [this.instructorList()[2], this.instructorList()[3]],
         location: 'Sousse',
         startingDate: '2025-02-05',
         finishingDate: '2025-02-07',
@@ -38,7 +38,7 @@ export class SessionService {
       {
         id: 3,
         courseId: 2,
-        instructors: [this.instructorList()[0], this.instructorList()[1]],
+        instructors: [this.instructorList()[0], this.instructorList()[3]],
         location: 'Online',
         startingDate: '2025-03-01',
         finishingDate: '2025-03-03',
@@ -48,7 +48,7 @@ export class SessionService {
       {
         id: 4,
         courseId: 2,
-        instructors: [this.instructorList()[0], this.instructorList()[1]],
+        instructors: [this.instructorList()[2], this.instructorList()[4]],
         location: 'Tunis',
         startingDate: '2025-03-20',
         finishingDate: '2025-03-22',
@@ -59,7 +59,7 @@ export class SessionService {
       {
         id: 5,
         courseId: 3,
-        instructors: [this.instructorList()[0], this.instructorList()[1]],
+        instructors: [this.instructorList()[4], this.instructorList()[1]],
         location: 'Sfax',
         startingDate: '2025-04-02',
         finishingDate: '2025-04-05',
@@ -69,7 +69,7 @@ export class SessionService {
       {
         id: 6,
         courseId: 3,
-        instructors: [this.instructorList()[0], this.instructorList()[1]],
+        instructors: [this.instructorList()[3], this.instructorList()[4]],
         location: 'Online',
         startingDate: '2025-04-15',
         finishingDate: '2025-04-17',
@@ -80,7 +80,7 @@ export class SessionService {
       {
         id: 7,
         courseId: 4,
-        instructors: [this.instructorList()[0], this.instructorList()[1]],
+        instructors: [this.instructorList()[2], this.instructorList()[4]],
         location: 'Tunis',
         startingDate: '2025-05-10',
         finishingDate: '2025-05-12',
@@ -90,7 +90,7 @@ export class SessionService {
       {
         id: 8,
         courseId: 4,
-        instructors: [this.instructorList()[0], this.instructorList()[1]],
+        instructors: [this.instructorList()[3], this.instructorList()[2]],
         location: 'Sousse',
         startingDate: '2025-05-25',
         finishingDate: '2025-05-27',
@@ -101,7 +101,7 @@ export class SessionService {
       {
         id: 9,
         courseId: 5,
-        instructors: [this.instructorList()[0], this.instructorList()[1]],
+        instructors: [this.instructorList()[0], this.instructorList()[3]],
         location: 'Online',
         startingDate: '2025-06-01',
         finishingDate: '2025-06-03',
@@ -111,7 +111,7 @@ export class SessionService {
       {
         id: 10,
         courseId: 5,
-        instructors: [this.instructorList()[0], this.instructorList()[1]],
+        instructors: [this.instructorList()[3], this.instructorList()[1]],
         location: 'Tunis',
         startingDate: '2025-06-15',
         finishingDate: '2025-06-17',

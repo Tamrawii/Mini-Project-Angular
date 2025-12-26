@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CategoryModel } from '../models/category.model';
-import { CategoryService } from '../admin-space/manage-courses/category.service';
+import { CategoryService } from '../services/category.service';
 
 @Component({
   selector: 'app-navbar',

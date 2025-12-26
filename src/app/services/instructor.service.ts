@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { InstructorModel } from '../../models/instructor.model';
+import { InstructorModel } from '../models/instructor.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +13,8 @@ export class InstructorService {
       email: 'karim.bouaziz@example.com',
       phone: '50111222',
       CIN: '09887766',
-      photo: 'assets/photos/karim.jpg',
-      CV: 'assets/cv/karim.pdf',
+      photo: 'img/avatars/avatar2.png',
+      CV: 'cv/cv.pdf',
       skills: ['Java', 'Spring Boot', 'Software Architecture'],
     },
     {
@@ -24,8 +24,8 @@ export class InstructorService {
       email: 'sarra.triki@example.com',
       phone: '55443322',
       CIN: '12345678',
-      photo: 'assets/photos/sarra.jpg',
-      CV: 'assets/cv/sarra.pdf',
+      photo: 'img/avatars/avatar1.png',
+      CV: 'cv/cv.pdf',
       skills: ['HTML', 'CSS', 'JavaScript', 'UI/UX'],
     },
     {
@@ -35,8 +35,8 @@ export class InstructorService {
       email: 'walid.ksibi@example.com',
       phone: '20998844',
       CIN: '33445566',
-      photo: 'assets/photos/walid.jpg',
-      CV: 'assets/cv/walid.pdf',
+      photo: 'img/avatars/avatar4.png',
+      CV: 'cv/cv.pdf',
       skills: ['Python', 'Machine Learning', 'Data Analysis'],
     },
     {
@@ -46,8 +46,8 @@ export class InstructorService {
       email: 'amira.hammami@example.com',
       phone: '99887766',
       CIN: '22113355',
-      photo: 'assets/photos/amira.jpg',
-      CV: 'assets/cv/amira.pdf',
+      photo: 'img/avatars/avatar3.png',
+      CV: 'cv/cv.pdf',
       skills: ['MySQL', 'PostgreSQL', 'SQL Queries'],
     },
     {
@@ -57,8 +57,8 @@ export class InstructorService {
       email: 'youssef.mansour@example.com',
       phone: '50334455',
       CIN: '77889966',
-      photo: 'assets/photos/youssef.jpg',
-      CV: 'assets/cv/youssef.pdf',
+      photo: 'img/avatars/avatar2.png',
+      CV: 'cv/cv.pdf',
       skills: ['Clean Code', 'SOLID', 'Design Patterns'],
     },
   ]);

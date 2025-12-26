@@ -1,21 +1,39 @@
 <div class="container mt-5 mb-5">
-  <h1>Admin Space</h1>
-  <div class="row gap-4">
-    <a class="card col-4" routerLink="/manage-learners">
-      <img src="img/illustrations/learner.svg" alt="Logo" />
-      <h3 class="text-center mt-5">Manage Learners</h3>
+  <div class="admin-header">
+    <h1>Admin Space</h1>
+  </div>
+  
+  <div class="admin-cards-grid">
+    <a class="admin-card" routerLink="/manage-learners">
+      <div class="card-icon">
+        <img src="img/illustrations/learner.svg" alt="Manage Learners" />
+      </div>
+      <h3>Manage Learners</h3>
+      <p class="card-description">View and manage all enrolled learners</p>
     </a>
-    <a class="card col-4" routerLink="/manage-instructors">
-      <img src="img/illustrations/instructor.svg" alt="Logo" />
-      <h3 class="text-center mt-5">Manage Instructors</h3>
+
+    <a class="admin-card" routerLink="/manage-instructors">
+      <div class="card-icon">
+        <img src="img/illustrations/instructor.svg" alt="Manage Instructors" />
+      </div>
+      <h3>Manage Instructors</h3>
+      <p class="card-description">Add, edit, and manage instructors</p>
     </a>
-    <a class="card col-4" routerLink="/manage-courses">
-      <img src="img/illustrations/courses.svg" alt="Logo" />
-      <h3 class="text-center mt-5">Manage Courses</h3>
+
+    <a class="admin-card" routerLink="/manage-courses">
+      <div class="card-icon">
+        <img src="img/illustrations/courses.svg" alt="Manage Courses" />
+      </div>
+      <h3>Manage Courses</h3>
+      <p class="card-description">Create and manage course content</p>
     </a>
-    <a class="card col-4" routerLink="/manage-sessions">
-      <img src="img/illustrations/session.svg" alt="Logo" />
-      <h3 class="text-center mt-5">Manage Sessions</h3>
+
+    <a class="admin-card" routerLink="/manage-sessions">
+      <div class="card-icon">
+        <img src="img/illustrations/session.svg" alt="Manage Sessions" />
+      </div>
+      <h3>Manage Sessions</h3>
+      <p class="card-description">Schedule and manage training sessions</p>
     </a>
   </div>
 </div>

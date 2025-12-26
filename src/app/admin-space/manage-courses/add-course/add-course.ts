@@ -1,8 +1,8 @@
 import { Component, output, signal } from '@angular/core';
 import { CourseModel, Level } from '../../../models/course.model';
-import { CourseService } from '../../../home/courses-list/course.service';
+import { CourseService } from '../../../services/course.service';
 import { FormsModule } from '@angular/forms';
-import { CategoryService } from '../category.service';
+import { CategoryService } from '../../../services/category.service';
 import { CategoryModel } from '../../../models/category.model';
 
 @Component({

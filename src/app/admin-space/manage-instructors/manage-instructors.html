@@ -25,6 +25,7 @@
         <th scope="col">Email</th>
         <th scope="col">Phone number</th>
         <th scope="col">CIN</th>
+        <th scope="col">C.V</th>
         <th scope="col">Skills</th>
         <th scope="col">Actions</th>
       </tr>
@@ -39,6 +40,9 @@
         <td>{{ instructor.email }}</td>
         <td>{{ instructor.phone }}</td>
         <td>{{ instructor.CIN }}</td>
+        <td>
+          <a href="{{instructor.CV}}" target="_blank">Open</a>
+        </td>
         <td>
           @for(skill of instructor.skills; track skill) {
           <span class="badge rounded-pill bg-info"> {{ skill }} </span>}

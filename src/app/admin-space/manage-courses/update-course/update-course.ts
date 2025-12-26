@@ -1,7 +1,7 @@
 import { Component, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CourseModel, Level } from '../../../models/course.model';
-import { CourseService } from '../../../home/courses-list/course.service';
+import { CourseService } from '../../../services/course.service';
 
 @Component({
   selector: 'app-update-course',

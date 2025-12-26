@@ -10,6 +10,7 @@
     <thead>
       <tr>
         <th scope="col">ID</th>
+        <td scope="col">Photo</td>
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
         <th scope="col">Email</th>
@@ -21,6 +22,7 @@
       @for(candidate of candidatesList(); track candidate.id){
       <tr>
         <th scope="row">{{candidate.id}}</th>
+        <th><img src="{{candidate.photo}}" height="70" alt="candidate photo" /></th>
         <td>{{ candidate.firstName }}</td>
         <td>{{ candidate.lastName }}</td>
         <td>{{ candidate.email }}</td>

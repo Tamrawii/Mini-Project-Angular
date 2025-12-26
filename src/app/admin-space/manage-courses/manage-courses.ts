@@ -1,11 +1,11 @@
 import { Component, input, output, signal, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CourseService } from '../../home/courses-list/course.service';
+import { CourseService } from '../../services/course.service';
 import { CourseModel, Level } from '../../models/course.model';
 import { AddCourse } from './add-course/add-course';
-import { SessionService } from '../../course-details/details-card/session.service';
 import { UpdateCourse } from './update-course/update-course';
 import { AddSession } from './add-session/add-session';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-manage-instructors',

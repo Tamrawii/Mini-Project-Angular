@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { CandidateModel } from '../../models/candidate.model';
+import { CandidateModel } from '../models/candidate.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class CandidateService {
       lastName: 'Gharbi',
       email: 'amine.gharbi@example.com',
       CIN: '09876543',
-      photo: 'assets/photos/amine.jpg',
+      photo: 'img/avatars/avatar2.png',
       password: 'pass1234',
     },
     {
@@ -21,7 +21,7 @@ export class CandidateService {
       lastName: 'Mansouri',
       email: 'sara.mansouri@example.com',
       CIN: '11223344',
-      photo: 'assets/photos/sara.jpg',
+      photo: 'img/avatars/avatar1.png',
       password: 'saraPass!9',
     },
     {
@@ -30,7 +30,7 @@ export class CandidateService {
       lastName: 'Trabelsi',
       email: 'mohamed.trabelsi@example.com',
       CIN: '55667788',
-      photo: 'assets/photos/mohamed.jpg',
+      photo: 'img/avatars/avatar4.png',
       password: 'mhmd2025',
     },
     {
@@ -39,7 +39,7 @@ export class CandidateService {
       lastName: 'Ben Ali',
       email: 'yosra.benali@example.com',
       CIN: '22334455',
-      photo: 'assets/photos/yosra.jpg',
+      photo: 'img/avatars/avatar3.png',
       password: 'yosraSecure1',
     },
     {
@@ -48,7 +48,7 @@ export class CandidateService {
       lastName: 'Saidi',
       email: 'khalil.saidi@example.com',
       CIN: '66778899',
-      photo: 'assets/photos/khalil.jpg',
+      photo: 'img/avatars/avatar2.png',
       password: 'khalilDev!3',
     },
   ]);

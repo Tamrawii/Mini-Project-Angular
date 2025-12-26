@@ -1,10 +1,10 @@
 import { Component, input, output, signal } from '@angular/core';
 import { Language, SessionModel } from '../../../models/session.model';
 import { InstructorModel } from '../../../models/instructor.model';
-import { SessionService } from '../../../course-details/details-card/session.service';
-import { InstructorService } from '../../manage-instructors/instructor.service';
 import { FormsModule } from '@angular/forms';
-import { CourseService } from '../../../home/courses-list/course.service';
+import { CourseService } from '../../../services/course.service';
+import { SessionService } from '../../../services/session.service';
+import { InstructorService } from '../../../services/instructor.service';
 
 @Component({
   selector: 'app-add-session',

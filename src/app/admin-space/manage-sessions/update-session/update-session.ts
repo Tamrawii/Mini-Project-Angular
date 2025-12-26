@@ -1,7 +1,7 @@
 import { Component, input, output, signal } from '@angular/core';
 import { Language, SessionModel } from '../../../models/session.model';
-import { SessionService } from '../../../course-details/details-card/session.service';
 import { FormsModule } from '@angular/forms';
+import { SessionService } from '../../../services/session.service';
 
 @Component({
   selector: 'app-update-session',

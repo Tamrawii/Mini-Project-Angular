@@ -1,7 +1,7 @@
 import { Component, input, output, signal, OnInit } from '@angular/core';
-import { CandidateService } from '../../../course-details/enroll-course/candidate.service';
 import { CandidateModel } from '../../../models/candidate.model';
 import { FormsModule } from '@angular/forms';
+import { CandidateService } from '../../../services/candidate.service';
 
 @Component({
   selector: 'app-update-learner',

@@ -1,31 +1,136 @@
-h1 {
-  margin-bottom: 35px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.admin-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #081120;
+  margin-bottom: 10px;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
-.card {
+.admin-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.admin-card {
   background: rgb(233, 236, 239);
   border-radius: 18px;
   border: 0.8px solid grey;
-  padding: 22px;
-  min-height: 260px;
+  padding: 40px 30px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  text-align: center;
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
   cursor: pointer;
+  min-height: 300px;
+  justify-content: center;
+  gap: 15px;
 }
 
-.card:hover {
+.admin-card:hover {
   transform: translateY(-6px);
   box-shadow: 10px 10px rgba(0, 0, 0, 1);
 }
 
-.card img {
-  height: 200px;
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 10px;
+}
+
+.card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.admin-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #081120;
+  margin: 0;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-header h1 {
+    font-size: 28px;
+  }
+
+  .admin-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .admin-card {
+    padding: 30px 20px;
+    min-height: 250px;
+  }
+
+  .card-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  .admin-card h3 {
+    font-size: 18px;
+  }
+
+  .card-description {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-header h1 {
+    font-size: 24px;
+  }
+
+  .admin-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .admin-card {
+    padding: 25px 15px;
+    min-height: 200px;
+  }
+
+  .card-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .admin-card h3 {
+    font-size: 16px;
+  }
 }

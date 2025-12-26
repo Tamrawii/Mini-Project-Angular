@@ -1,9 +1,9 @@
 import { Injectable, signal, effect } from '@angular/core';
-import { Level, type CourseModel } from '../../models/course.model';
-import { InstructorService } from '../../admin-space/manage-instructors/instructor.service';
-import { InstructorModel } from '../../models/instructor.model';
-import { CategoryService } from '../../admin-space/manage-courses/category.service';
-import { CategoryModel } from '../../models/category.model';
+import { Level, type CourseModel } from '../models/course.model';
+import { InstructorService } from './instructor.service';
+import { InstructorModel } from '../models/instructor.model';
+import { CategoryService } from './category.service';
+import { CategoryModel } from '../models/category.model';
 
 @Injectable({
   providedIn: 'root',
