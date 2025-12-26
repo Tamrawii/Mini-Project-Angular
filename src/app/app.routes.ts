@@ -8,6 +8,7 @@ import { ManageInstructors } from './admin-space/manage-instructors/manage-instr
 import { ManageCourses } from './admin-space/manage-courses/manage-courses';
 import { Explore } from './navbar/explore/explore';
 import { PageNotFound } from './page-not-found/page-not-found';
+import { ManageSessions } from './admin-space/manage-sessions/manage-sessions';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,10 @@ export const routes: Routes = [
   {
     path: 'manage-courses',
     component: ManageCourses,
+  },
+  {
+    path: 'manage-sessions',
+    component: ManageSessions,
   },
   {
     path: 'explore/:categoryId',

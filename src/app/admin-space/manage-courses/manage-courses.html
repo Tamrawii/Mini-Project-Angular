@@ -47,7 +47,7 @@
         <td>{{ course.keyWords }}</td>
         <td>
           @for(category of course.categories; track category) {
-          <span class="badge rounded-pill bg-info"> {{ category }} </span>}
+          <span class="badge rounded-pill bg-info"> {{ category.label }} </span>}
         </td>
         <td>{{ getTotalSessionsNumber(course.id) }}</td>
         <td>

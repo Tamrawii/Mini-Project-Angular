@@ -1,4 +1,4 @@
-import { InstructorModel } from '../../admin-space/manage-instructors/instructor.model';
+import { InstructorModel } from './instructor.model';
 
 export enum Language {
   Arabic = 'AR',

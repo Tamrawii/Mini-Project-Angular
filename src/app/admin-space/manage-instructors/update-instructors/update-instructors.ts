@@ -1,8 +1,8 @@
 import { Component, input, output, signal, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { InstructorModel } from '../instructor.model';
 import { InstructorService } from '../instructor.service';
 import { escapeLeadingUnderscores } from 'typescript';
+import { InstructorModel } from '../../../models/instructor.model';
 
 @Component({
   selector: 'app-update-instructors',

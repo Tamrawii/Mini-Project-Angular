@@ -1,10 +1,10 @@
 import { Component, input, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from '../home/courses-list/course.service';
-import { CourseModel, Level } from '../home/courses-list/course.model';
+import { CourseModel, Level } from '../models/course.model';
 import { DetailsCard } from './details-card/details-card';
 import { SessionService } from './details-card/session.service';
-import { Language, SessionModel } from './session-details/session.model';
+import { Language, SessionModel } from '../models/session.model';
 import { SessionDetails } from './session-details/session-details';
 import { EnrollCourse } from './enroll-course/enroll-course';
 

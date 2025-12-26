@@ -1,0 +1,50 @@
+@if(toggleUpdateDialog()) {
+<app-update-session
+  (hideDialogEvenet)="onHideUpdateDialog($event)"
+  [sessionData]="SelectedSession()"
+></app-update-session>
+}
+<div class="container mt-5 mb-5">
+  <h1>Manage Sessions</h1>
+  <table class="table display" id="example">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <td scope="col">Course ID</td>
+        <th scope="col">Instructors</th>
+        <th scope="col">Location</th>
+        <th scope="col">Starting Date</th>
+        <th scope="col">Finishing Date</th>
+        <th scope="col">Language</th>
+        <th scope="col">Enrolled Places</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(session of sessionsList(); track session.id){
+      <tr>
+        <th scope="row">{{session.id}}</th>
+        <td>{{ session.courseId }}</td>
+        <td>
+          @for(instructor of session.instructors; track instructor) {
+          <span class="badge rounded-pill bg-info">
+            {{ instructor.firstName }} {{ instructor.lastName }}</span
+          >}
+        </td>
+        <td>{{ session.location }}</td>
+        <td>{{ session.startingDate }}</td>
+        <td>{{ session.finishingDate }}</td>
+        <td>{{ session.language }}</td>
+        <td>{{ session.enrolledPlaces }}</td>
+        <td>
+          <button (click)="onShowUpdateDialog(session)" class="btn btn-outline-primary">
+            Update
+          </button>
+
+          <button (click)="removeSession(session.id)" class="btn btn-outline-danger">Delete</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

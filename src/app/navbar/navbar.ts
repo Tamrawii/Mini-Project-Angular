@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CategoryModel } from '../admin-space/manage-courses/category.model';
+import { CategoryModel } from '../models/category.model';
 import { CategoryService } from '../admin-space/manage-courses/category.service';
 
 @Component({

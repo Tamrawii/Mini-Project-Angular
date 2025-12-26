@@ -1,5 +1,5 @@
 import { Component, input, OnInit } from '@angular/core';
-import { CourseModel } from '../course.model';
+import { CourseModel } from '../../../models/course.model';
 import { RouterLink } from '@angular/router';
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CourseService } from '../home/courses-list/course.service';
-import { CourseModel, Level } from '../home/courses-list/course.model';
-import { Language } from '../course-details/session-details/session.model';
+import { CourseModel, Level } from '../models/course.model';
+import { Language } from '../models/session.model';
 import { Card } from '../home/courses-list/card/card';
 
 @Component({

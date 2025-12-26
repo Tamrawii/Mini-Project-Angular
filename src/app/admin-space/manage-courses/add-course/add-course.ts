@@ -1,9 +1,9 @@
 import { Component, output, signal } from '@angular/core';
-import { CourseModel, Level } from '../../../home/courses-list/course.model';
+import { CourseModel, Level } from '../../../models/course.model';
 import { CourseService } from '../../../home/courses-list/course.service';
 import { FormsModule } from '@angular/forms';
 import { CategoryService } from '../category.service';
-import { CategoryModel } from '../category.model';
+import { CategoryModel } from '../../../models/category.model';
 
 @Component({
   selector: 'app-add-course',

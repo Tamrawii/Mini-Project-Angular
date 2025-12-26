@@ -1,6 +1,6 @@
 import { Component, signal, OnInit } from '@angular/core';
 import { CourseService } from '../../home/courses-list/course.service';
-import { CourseModel, Level } from '../../home/courses-list/course.model';
+import { CourseModel, Level } from '../../models/course.model';
 import { Card } from '../../home/courses-list/card/card';
 import { ActivatedRoute } from '@angular/router';
 import { SignatureHelpTriggerCharacter } from 'typescript';

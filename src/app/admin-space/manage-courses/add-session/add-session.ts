@@ -1,6 +1,6 @@
 import { Component, input, output, signal } from '@angular/core';
-import { Language, SessionModel } from '../../../course-details/session-details/session.model';
-import { InstructorModel } from '../../manage-instructors/instructor.model';
+import { Language, SessionModel } from '../../../models/session.model';
+import { InstructorModel } from '../../../models/instructor.model';
 import { SessionService } from '../../../course-details/details-card/session.service';
 import { InstructorService } from '../../manage-instructors/instructor.service';
 import { FormsModule } from '@angular/forms';

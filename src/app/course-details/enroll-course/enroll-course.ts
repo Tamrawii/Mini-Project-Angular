@@ -2,7 +2,7 @@ import { Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SessionService } from '../details-card/session.service';
 import { CandidateService } from './candidate.service';
-import { type CandidateModel } from './candidate.model';
+import { type CandidateModel } from '../../models/candidate.model';
 
 @Component({
   selector: 'app-enroll-course',

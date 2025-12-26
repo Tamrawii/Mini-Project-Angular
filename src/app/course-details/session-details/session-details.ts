@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { SessionModel } from './session.model';
+import { SessionModel } from '../../models/session.model';
 import { DatePipe } from '@angular/common';
 
 @Component({

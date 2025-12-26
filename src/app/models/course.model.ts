@@ -1,5 +1,5 @@
-import { CategoryModel } from '../../admin-space/manage-courses/category.model';
-import { SessionModel } from '../../course-details/session-details/session.model';
+import { CategoryModel } from './category.model';
+import { SessionModel } from './session.model';
 
 export enum Level {
   Beginner = 'Beginner',

@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
-import { Language, SessionModel } from '../session-details/session.model';
+import { Language, SessionModel } from '../../models/session.model';
 import { InstructorService } from '../../admin-space/manage-instructors/instructor.service';
-import { InstructorModel } from '../../admin-space/manage-instructors/instructor.model';
+import { InstructorModel } from '../../models/instructor.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,6 @@ export class SessionService {
   constructor(private instructorService: InstructorService) {
     this.instructorList.set(instructorService.getInstructors());
     this.sessionsList.set([
-      // Course 1
       {
         id: 1,
         courseId: 1,
@@ -36,7 +35,6 @@ export class SessionService {
         enrolledPlaces: 4,
       },
 
-      // Course 2
       {
         id: 3,
         courseId: 2,
@@ -58,7 +56,6 @@ export class SessionService {
         enrolledPlaces: 7,
       },
 
-      // Course 3
       {
         id: 5,
         courseId: 3,
@@ -80,7 +77,6 @@ export class SessionService {
         enrolledPlaces: 9,
       },
 
-      // Course 4
       {
         id: 7,
         courseId: 4,
@@ -102,7 +98,6 @@ export class SessionService {
         enrolledPlaces: 4,
       },
 
-      // Course 5
       {
         id: 9,
         courseId: 5,
@@ -124,7 +119,6 @@ export class SessionService {
         enrolledPlaces: 8,
       },
 
-      // Course 6
       {
         id: 11,
         courseId: 6,
@@ -146,7 +140,6 @@ export class SessionService {
         enrolledPlaces: 2,
       },
 
-      // Extra session (any course to reach 13)
       {
         id: 13,
         courseId: 3,
@@ -162,7 +155,7 @@ export class SessionService {
     if (sessions) this.sessionsList.set(JSON.parse(sessions));
   }
 
-  getSession() {
+  getSessions() {
     return this.sessionsList();
   }
 
@@ -193,6 +186,12 @@ export class SessionService {
     this.saveSessions();
   }
 
+  updateSession(session: SessionModel) {
+    let sessionIndex = this.sessionsList().findIndex((s) => s.id === session.id);
+    this.sessionsList()[sessionIndex] = session;
+    this.saveSessions();
+  }
+
   getTotalCourseSessions(courseId: number) {
     let total = 0;
     this.sessionsList().forEach((session) => (session.courseId === courseId ? total++ : 0));
@@ -207,6 +206,11 @@ export class SessionService {
     return this.instructorList().filter((instructor) =>
       instructors.find((id) => +id === instructor.id),
     );
+  }
+
+  removeSession(sessionId: number) {
+    this.sessionsList.set(this.sessionsList().filter((session) => session.id !== sessionId));
+    this.saveSessions();
   }
 
   saveSessions() {

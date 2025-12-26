@@ -1,6 +1,6 @@
 import { Component, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CourseModel, Level } from '../../../home/courses-list/course.model';
+import { CourseModel, Level } from '../../../models/course.model';
 import { CourseService } from '../../../home/courses-list/course.service';
 
 @Component({

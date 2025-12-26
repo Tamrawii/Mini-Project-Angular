@@ -1,9 +1,9 @@
 import { Component, input, output, signal, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { InstructorModel } from './instructor.model';
 import { InstructorService } from './instructor.service';
 import { UpdateInstructors } from './update-instructors/update-instructors';
 import { AddInstructor } from './add-instructor/add-instructor';
+import { InstructorModel } from '../../models/instructor.model';
 
 @Component({
   selector: 'app-manage-instructors',
